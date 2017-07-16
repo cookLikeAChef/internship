@@ -5,7 +5,7 @@ import myPlot
 import myResData
 
 class period(threading.Thread):
-    cpu_percent_list = [0]*51
+    cpu_percent_list = [0]*61
     on = False
     res = None
 
@@ -14,7 +14,7 @@ class period(threading.Thread):
         self. res = myResData.Resource()  # 리소스를 담을 스레드 객체 생성
         self.on = True
         self.daemon = True
-        self.cpu_percent_list = [0]*51
+        self.cpu_percent_list = [0]*61
 
     def run(self, plt, fig, ax1, ax2):
         while self.on:
@@ -26,11 +26,15 @@ class period(threading.Thread):
             self.cpu_percent_list.append(cpu_percent)
 
             ax1.cla()
-            ax1.set_xlim(0, 50)
+            ax1.set_xlim(0, 60)
             ax1.set_ylim(0, 100)
             ax1.set_title("CPU")
+            ax1.grid(True, linestyle='-', lw=0.2)
 
-            ax1.fill_between(range(0,51), self.cpu_percent_list, y2=0, edgecolor="#A0D9E2", facecolors="#D6FFFF", lw=1)
+            ax1.fill_between(range(0,61), self.cpu_percent_list, y2=0, edgecolor="#6B66FF", facecolors="#B2CCFF", lw=2, alpha=0.7)
+            ax1.tick_params(axis='x', colors='white')
+            ax1.tick_params(axis='y', colors='white')
+            ax1.set_xticklabels([60, 50, 40, 30, 20, 10, 0])
 
             fig.canvas.update()
             fig.canvas.flush_events()

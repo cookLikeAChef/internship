@@ -9,9 +9,9 @@ def createPlot(data, windowSize = 1, sigma = 1.0, rolling = True):
     movingAvg = getMovingAvg_list(data, windowSize) # 이동 평균
     movingStd = getMovingStd_list(data, windowSize) # 이동 표준 편차
 
-    fig = plt.figure(figsize=(15,5)) # 그래프 사이즈 설정
-    ax1 = fig.add_subplot(2,1,1)
-    ax2 = fig.add_subplot(2,1,2)
+    fig = plt.figure(figsize=(7,4), facecolor="#000000") # 그래프 사이즈 설정
+    ax1 = fig.add_subplot(2,1,1, facecolor="#191919")
+    ax2 = fig.add_subplot(2,1,2, facecolor="#191919")
 
     # 다이나믹 그래프를 위한 소스
     plt.ion()
